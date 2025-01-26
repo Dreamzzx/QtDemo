@@ -10,7 +10,13 @@ Widget::Widget(QWidget *parent)
 
     setQTreeView();
 
-    seQTableView();
+    setQTableView();
+
+    setQListWidget();
+
+    setQTreeWidget();
+
+    setQTableWidget();
     ui->setupUi(this);
 }
 
@@ -62,7 +68,7 @@ void Widget::setQTreeView()
     glayout->addWidget(qtv,0,1,0,1);
 }
 
-void Widget::seQTableView()
+void Widget::setQTableView()
 {
     QTableView* qtv = new QTableView(this);
 
@@ -93,3 +99,57 @@ void Widget::seQTableView()
     glayout->addWidget(qtv,1,0);
 }
 
+void Widget::setQListWidget()
+{
+    QListWidget* qlw = new QListWidget(this);
+    QListWidgetItem* qlwi = new QListWidgetItem("test",qlw);
+    qlwi->setTextAlignment(Qt::AlignVCenter|Qt::AlignCenter);
+
+    qlw->addItem(qlwi);
+    qlw->addItem("test\n \
+                  test\n \
+                 ");
+    glayout->addWidget(qlw,1,1);
+}
+
+void Widget::setQTreeWidget()
+{
+    QTreeWidget* qtw = new QTreeWidget(this);
+    QTreeWidgetItem*qtwi1 = new QTreeWidgetItem(qtw);
+    qtwi1->setText(0,"test1");
+    QTreeWidgetItem*qtwi2 = new QTreeWidgetItem(qtw);
+    qtwi2->setText(0,"test2");
+
+    QTreeWidgetItem*qtwi11 = new QTreeWidgetItem(qtwi1);
+    qtwi11->setText(0,"test");
+
+    qtw->setHeaderHidden(true);
+    glayout->addWidget(qtw,2,0);
+}
+
+void Widget::setQTableWidget()
+{
+    QTableWidget*qtw = new QTableWidget(this);
+    qtw->setColumnCount(3);
+    qtw->setRowCount(3);
+    qtw->setEditTriggers(false);
+
+    qtw->setHorizontalHeaderItem(0,new QTableWidgetItem("ID"));
+    qtw->setHorizontalHeaderItem(1,new QTableWidgetItem("test1"));
+    qtw->setHorizontalHeaderItem(2,new QTableWidgetItem("test2"));
+
+    qtw->setItem(0,0,new QTableWidgetItem("0"));
+    qtw->setItem(0,1,new QTableWidgetItem("zz"));
+    qtw->setItem(0,2,new QTableWidgetItem("zz"));
+
+    qtw->setItem(1,0,new QTableWidgetItem("1"));
+    qtw->setItem(1,1,new QTableWidgetItem("xx"));
+    qtw->setItem(1,2,new QTableWidgetItem("xx"));
+
+    qtw->setItem(2,0,new QTableWidgetItem("2"));
+    qtw->setItem(2,1,new QTableWidgetItem("cc"));
+    qtw->setItem(2,2,new QTableWidgetItem("cc"));
+    //qtwi.setText("");
+    //qtw->setItem(0,0,qtwi);
+    glayout->addWidget(qtw,2,1);
+}

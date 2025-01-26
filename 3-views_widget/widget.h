@@ -9,7 +9,9 @@
 #include <QTreeView>
 #include <QStandardItemModel>
 #include <QTableView>
-
+#include <QListWidget>
+#include <QTreeWidget>
+#include <QTableWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -28,7 +30,14 @@ public:
     //树视图
     void setQTreeView();
     //表单视图
-    void seQTableView();
+    void setQTableView();
+
+    //清单控件
+    void setQListWidget();
+    //树控件
+    void setQTreeWidget();
+    //表单控件
+    void setQTableWidget();
 private:
     QGridLayout*glayout;
     Ui::Widget *ui;
